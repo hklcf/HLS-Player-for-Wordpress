@@ -145,7 +145,7 @@ function hlsp_video_func( $atts, $link = '' ) {
 	$atts = shortcode_atts(
 		array(
 			'id' => $hlsp_player_option['id'],
-		), $atts, 'video' );
+		), $atts, 'hls' );
 	$player_div = '<div id="'.esc_html($atts['id']).'"></div><script src="https://ssl.p.jwpcdn.com/player/v/'.$hlsp_player_option['version'].'/jwplayer.js"></script>';
 	$player = '<script>jwplayer.key="'.$hlsp_player_option['key'].'";jwplayer("'.esc_html($atts['id']).'").setup({"aspectratio":"'.$hlsp_player_option['ratio'].'","image":"'.$thumbnail.'","file":"'.$source.'","height":"'.$hlsp_player_option['height'].'","width":"'.$hlsp_player_option['width'].'","preload":"'.$hlsp_player_option['preload'].'","playbackRateControls":"'.$hlsp_player_option['playbackratecontrols'].'","logo":{"file":"'.$hlsp_player_option['logo'].'","link":"'.$hlsp_player_option['logo_link'].'","position":"'.$hlsp_player_option['logo_position'].'"},"abouttext":"'.$hlsp_player_option['abouttext'].'","aboutlink":"'.$hlsp_player_option['aboutlink'].'"'.$advertising.'});</script>';
 	if($hlsp_player_option['encode'] === '1') {
@@ -154,13 +154,13 @@ function hlsp_video_func( $atts, $link = '' ) {
 		return $player_div.$player;
 	}
 }
-add_shortcode( 'video', 'hlsp_video_func' );
+add_shortcode( 'hls', 'hlsp_video_func' );
 
 function hlsp_video_quicktags() {
 	if(wp_script_is('quicktags')) {
 ?>
 		<script type="text/javascript">
-			QTags.addButton( 'video', 'video', '[video]', '[/video]', '', 'HLS Player', 201 );
+			QTags.addButton( 'hls', 'hls', '[hls]', '[/hls]', '', 'HLS Player', 201 );
 		</script>
 <?php
 	}
