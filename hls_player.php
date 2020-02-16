@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: HLS Player
-Plugin URI:  https://eservice-hk.net/plugins/hls-player/
+Plugin URI:  https://github.com/hklcf/HLS-Player-for-Wordpress
 Description: Embed hls stream to WordPress using JW Player
-Version:     1.1
+Version:     1.2
 Author:      HKLCF
 Author URI:  https://eservice-hk.net/
 License:     GPL3.0
@@ -24,53 +24,63 @@ function add_hlsp_menu() {
 		echo 'HLS Player Setting';
 	}
 
-	add_settings_field( 'hlsp_player_version', 'JW Player Version', 'hlsp_player_version_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_version', '<label for="hlsp_player_option[version]">JW Player Version</label>', 'hlsp_player_version_function', $option_group, $setting_section );
 	function hlsp_player_version_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.4.2">';
+		echo '<input class="regular-text" id="hlsp_player_option[version]" name="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.12.5">';
 	}
 
-	add_settings_field( 'hlsp_player_key', 'JW Player License Key', 'hlsp_player_key_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_key', '<label for="hlsp_player_option[key]">JW Player License Key</label>', 'hlsp_player_key_function', $option_group, $setting_section );
 	function hlsp_player_key_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[key]" type="text" value="'.$hlsp_player_option['key'].'" placeholder="License Key">';
+		echo '<input class="regular-text" id="hlsp_player_option[key]" name="hlsp_player_option[key]" type="text" value="'.$hlsp_player_option['key'].'" placeholder="License Key">';
 		echo '<p class="description">Certain JW Player features may require a specific license.</p>';
 	}
 
-	add_settings_field( 'hlsp_player_id', 'Player ID', 'hlsp_player_id_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_id', '<label for="hlsp_player_option[id]">Player ID</label>', 'hlsp_player_id_function', $option_group, $setting_section );
 	function hlsp_player_id_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[id]" type="text" value="'.$hlsp_player_option['id'].'" placeholder="player">';
+		echo '<input class="regular-text" id="hlsp_player_option[id]" name="hlsp_player_option[id]" type="text" value="'.$hlsp_player_option['id'].'" placeholder="player">';
 	}
 
 	add_settings_field( 'hlsp_player_size', 'Player Size', 'hlsp_player_size_function', $option_group, $setting_section );
 	function hlsp_player_size_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
 		echo '<label for="hlsp_player_option[height]">Height </label><input class="small-text" id="hlsp_player_option[height]" name="hlsp_player_option[height]" type="text" value="'.$hlsp_player_option['height'].'" placeholder="100%">';
-		echo '<label for="hlsp_player_option[width]"> Width </label><input class="small-text" id="hlsp_player_option[width]" name="hlsp_player_option[width]" type="text" value="'.$hlsp_player_option['width'].'" placeholder="100%">';
+		echo '&nbsp;';
+		echo '<label for="hlsp_player_option[width]">Width </label><input class="small-text" id="hlsp_player_option[width]" name="hlsp_player_option[width]" type="text" value="'.$hlsp_player_option['width'].'" placeholder="100%">';
 	}
 
-	add_settings_field( 'hlsp_player_ratio', 'Player Ratio', 'hlsp_player_ratio_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_ratio', '<label for="hlsp_player_option[ratio]">Player Ratio</label>', 'hlsp_player_ratio_function', $option_group, $setting_section );
 	function hlsp_player_ratio_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[ratio]" type="text" value="'.$hlsp_player_option['ratio'].'" placeholder="16:9">';
+		echo '<input class="regular-text" id="hlsp_player_option[ratio]" name="hlsp_player_option[ratio]" type="text" value="'.$hlsp_player_option['ratio'].'" placeholder="16:9">';
 	}
 
-	add_settings_field( 'hlsp_player_preload', 'Video Preload', 'hlsp_player_preload_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_preload', '<label for="hlsp_player_option[preload]">Video Preload</label>', 'hlsp_player_preload_function', $option_group, $setting_section );
 	function hlsp_player_preload_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
 		$preload = $hlsp_player_option['preload'];
-		echo '<select name="hlsp_player_option[preload]">';
+		echo '<select id="hlsp_player_option[preload]" name="hlsp_player_option[preload]">';
 		echo '<option value="none" '.selected( $preload, 'none' ).'>none</option><option value="metadata" '.selected( $preload, 'metadata' ).'>metadata</option><option value="auto" '.selected( $preload, 'auto' ).'>auto</option>';
 		echo '</select>';
 	}
 
-	add_settings_field( 'hlsp_player_playbackratecontrols', 'Video Playback Rate Controls', 'hlsp_player_playbackratecontrols_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_playbackratecontrols', '<label for="hlsp_player_option[playbackratecontrols]">Video Playback Rate Controls</label>', 'hlsp_player_playbackratecontrols_function', $option_group, $setting_section );
 	function hlsp_player_playbackratecontrols_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
 		$playbackratecontrols = $hlsp_player_option['playbackratecontrols'];
-		echo '<select name="hlsp_player_option[playbackratecontrols]">';
+		echo '<select id="hlsp_player_option[playbackratecontrols]" name="hlsp_player_option[playbackratecontrols]">';
 		echo '<option value="false" '.selected( $playbackratecontrols, 'false' ).'>false</option><option value="true" '.selected( $playbackratecontrols, 'true' ).'>true</option>';
+		echo '</select>';
+	}
+
+	add_settings_field( 'hlsp_player_resumeplayback', '<label for="hlsp_player_option[resumeplayback]">Resume Playback w/ Cookies</label>', 'hlsp_player_resumeplayback_function', $option_group, $setting_section );
+	function hlsp_player_resumeplayback_function() {
+		$hlsp_player_option = get_option( 'hlsp_player_option' );
+		$resumeplayback = $hlsp_player_option['resumeplayback'];
+		echo '<select id="hlsp_player_option[resumeplayback]" name="hlsp_player_option[resumeplayback]">';
+		echo '<option value="false" '.selected( $resumeplayback, 'false' ).'>false</option><option value="true" '.selected( $resumeplayback, 'true' ).'>true</option>';
 		echo '</select>';
 	}
 
@@ -92,7 +102,7 @@ function add_hlsp_menu() {
 		echo '<p class="description">The HTTP URL which will load when your watermark image is clicked. (e.g. http://www.mywebsite.com/). If this is not set, a click on the watermark will not do anything.</p>';
 		echo '<br>';
 		echo '<label for="hlsp_player_option[logo_position]">Position </label><select id="hlsp_player_option[logo_position]" name="hlsp_player_option[logo_position]">';
-		echo '<option value="top-right" '.selected( $logo_position, 'top-right' ).'>top-right</option><option value="top-left" '.selected( $logo_position, 'top-left' ).'>top-left</option><option value="bottom-right" '.selected( $logo_position, 'bottom-right' ).'>bottom-right</option><option value="bottom-left" '.selected( $logo_position, 'bottom-left' ).'>bottom-left</option>';
+		echo '<option value="top-left" '.selected( $logo_position, 'top-left' ).'>top-left</option><option value="top-right" '.selected( $logo_position, 'top-right' ).'>top-right</option><option value="bottom-left" '.selected( $logo_position, 'bottom-left' ).'>bottom-left</option><option value="bottom-right" '.selected( $logo_position, 'bottom-right' ).'>bottom-right</option><option value="control-bar" '.selected( $logo_position, 'control-bar' ).'>control-bar</option>';
 		echo '</select>';
 	}
 
@@ -148,10 +158,13 @@ function hlsp_video_func( $atts, $link = '' ) {
 		), $atts, 'hls' );
 	$player_div = '<div id="'.esc_html($atts['id']).'"></div><script src="https://ssl.p.jwpcdn.com/player/v/'.$hlsp_player_option['version'].'/jwplayer.js"></script>';
 	$player = '<script>jwplayer.key="'.$hlsp_player_option['key'].'";jwplayer("'.esc_html($atts['id']).'").setup({"aspectratio":"'.$hlsp_player_option['ratio'].'","image":"'.$thumbnail.'","file":"'.$source.'","height":"'.$hlsp_player_option['height'].'","width":"'.$hlsp_player_option['width'].'","preload":"'.$hlsp_player_option['preload'].'","playbackRateControls":"'.$hlsp_player_option['playbackratecontrols'].'","logo":{"file":"'.$hlsp_player_option['logo'].'","link":"'.$hlsp_player_option['logo_link'].'","position":"'.$hlsp_player_option['logo_position'].'"},"abouttext":"'.$hlsp_player_option['abouttext'].'","aboutlink":"'.$hlsp_player_option['aboutlink'].'"'.$advertising.'});</script>';
+	if($hlsp_player_option['resumeplayback'] === 'true') {
+		$resumeplayback = '<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script><script>jwplayer("'.esc_html($atts['id']).'").once("play",function(){cookieData=Cookies.get("resume_playback");[resumeAt,duration]=cookieData.split(":");if(resumeAt<duration){jwplayer("'.esc_html($atts['id']).'").seek(resumeAt);}});jwplayer("'.esc_html($atts['id']).'").on("time",function(e){Cookies.set("resume_playback",e.position+":"+jwplayer("'.esc_html($atts['id']).'").getDuration());});</script>';
+	}
 	if($hlsp_player_option['encode'] === '1') {
-		return $player_div.'<script>document.write(window.atob("'.base64_encode($player).'"));</script>';
+		return $player_div.'<script>document.write(window.atob("'.base64_encode($player.$resumeplayback).'"));</script>';
 	} else {
-		return $player_div.$player;
+		return $player_div.$player.$resumeplayback;
 	}
 }
 add_shortcode( 'hls', 'hlsp_video_func' );
