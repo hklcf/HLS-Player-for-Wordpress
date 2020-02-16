@@ -66,11 +66,11 @@ function add_hlsp_menu() {
 		echo '</select>';
 	}
 
-	add_settings_field( 'hlsp_player_playbackratecontrols', 'Video Playback Rate Controls', 'hlsp_player_playbackratecontrols_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_playbackratecontrols', '<label for="hlsp_player_option[playbackratecontrols]">Video Playback Rate Controls</label>', 'hlsp_player_playbackratecontrols_function', $option_group, $setting_section );
 	function hlsp_player_playbackratecontrols_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
 		$playbackratecontrols = $hlsp_player_option['playbackratecontrols'];
-		echo '<select name="hlsp_player_option[playbackratecontrols]">';
+		echo '<select id="hlsp_player_option[playbackratecontrols]" name="hlsp_player_option[playbackratecontrols]">';
 		echo '<option value="false" '.selected( $playbackratecontrols, 'false' ).'>false</option><option value="true" '.selected( $playbackratecontrols, 'true' ).'>true</option>';
 		echo '</select>';
 	}
