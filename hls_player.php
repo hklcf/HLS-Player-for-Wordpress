@@ -57,11 +57,11 @@ function add_hlsp_menu() {
 		echo '<input class="regular-text" id="hlsp_player_option[ratio]" name="hlsp_player_option[ratio]" type="text" value="'.$hlsp_player_option['ratio'].'" placeholder="16:9">';
 	}
 
-	add_settings_field( 'hlsp_player_preload', 'Video Preload', 'hlsp_player_preload_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_preload', '<label for="hlsp_player_option[preload]">Video Preload</label>', 'hlsp_player_preload_function', $option_group, $setting_section );
 	function hlsp_player_preload_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
 		$preload = $hlsp_player_option['preload'];
-		echo '<select name="hlsp_player_option[preload]">';
+		echo '<select id="hlsp_player_option[preload]" name="hlsp_player_option[preload]">';
 		echo '<option value="none" '.selected( $preload, 'none' ).'>none</option><option value="metadata" '.selected( $preload, 'metadata' ).'>metadata</option><option value="auto" '.selected( $preload, 'auto' ).'>auto</option>';
 		echo '</select>';
 	}
