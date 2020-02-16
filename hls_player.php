@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: HLS Player
-Plugin URI:  https://eservice-hk.net/plugins/hls-player/
+Plugin URI:  https://github.com/hklcf/HLS-Player-for-Wordpress
 Description: Embed hls stream to WordPress using JW Player
-Version:     1.1
+Version:     1.2
 Author:      HKLCF
 Author URI:  https://eservice-hk.net/
 License:     GPL3.0
@@ -27,7 +27,7 @@ function add_hlsp_menu() {
 	add_settings_field( 'hlsp_player_version', 'JW Player Version', 'hlsp_player_version_function', $option_group, $setting_section );
 	function hlsp_player_version_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.4.2">';
+		echo '<input class="regular-text" name="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.12.5">';
 	}
 
 	add_settings_field( 'hlsp_player_key', 'JW Player License Key', 'hlsp_player_key_function', $option_group, $setting_section );
@@ -47,7 +47,8 @@ function add_hlsp_menu() {
 	function hlsp_player_size_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
 		echo '<label for="hlsp_player_option[height]">Height </label><input class="small-text" id="hlsp_player_option[height]" name="hlsp_player_option[height]" type="text" value="'.$hlsp_player_option['height'].'" placeholder="100%">';
-		echo '<label for="hlsp_player_option[width]"> Width </label><input class="small-text" id="hlsp_player_option[width]" name="hlsp_player_option[width]" type="text" value="'.$hlsp_player_option['width'].'" placeholder="100%">';
+		echo '&nbsp;';
+		echo '<label for="hlsp_player_option[width]">Width </label><input class="small-text" id="hlsp_player_option[width]" name="hlsp_player_option[width]" type="text" value="'.$hlsp_player_option['width'].'" placeholder="100%">';
 	}
 
 	add_settings_field( 'hlsp_player_ratio', 'Player Ratio', 'hlsp_player_ratio_function', $option_group, $setting_section );
