@@ -30,10 +30,10 @@ function add_hlsp_menu() {
 		echo '<input class="regular-text" id="hlsp_player_option[version]" name="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.12.5">';
 	}
 
-	add_settings_field( 'hlsp_player_key', 'JW Player License Key', 'hlsp_player_key_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_key', '<label for="hlsp_player_option[key]">JW Player License Key</label>', 'hlsp_player_key_function', $option_group, $setting_section );
 	function hlsp_player_key_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[key]" type="text" value="'.$hlsp_player_option['key'].'" placeholder="License Key">';
+		echo '<input class="regular-text" id="hlsp_player_option[key]" name="hlsp_player_option[key]" type="text" value="'.$hlsp_player_option['key'].'" placeholder="License Key">';
 		echo '<p class="description">Certain JW Player features may require a specific license.</p>';
 	}
 
