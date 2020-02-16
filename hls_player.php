@@ -37,10 +37,10 @@ function add_hlsp_menu() {
 		echo '<p class="description">Certain JW Player features may require a specific license.</p>';
 	}
 
-	add_settings_field( 'hlsp_player_id', 'Player ID', 'hlsp_player_id_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_id', '<label for="hlsp_player_option[id]">Player ID</label>', 'hlsp_player_id_function', $option_group, $setting_section );
 	function hlsp_player_id_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[id]" type="text" value="'.$hlsp_player_option['id'].'" placeholder="player">';
+		echo '<input class="regular-text" id="hlsp_player_option[id]" name="hlsp_player_option[id]" type="text" value="'.$hlsp_player_option['id'].'" placeholder="player">';
 	}
 
 	add_settings_field( 'hlsp_player_size', 'Player Size', 'hlsp_player_size_function', $option_group, $setting_section );
