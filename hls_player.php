@@ -24,10 +24,10 @@ function add_hlsp_menu() {
 		echo 'HLS Player Setting';
 	}
 
-	add_settings_field( 'hlsp_player_version', 'JW Player Version', 'hlsp_player_version_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_version', '<label for="hlsp_player_option[version]">JW Player Version</label>', 'hlsp_player_version_function', $option_group, $setting_section );
 	function hlsp_player_version_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.12.5">';
+		echo '<input class="regular-text" name="hlsp_player_option[version]" id="hlsp_player_option[version]" type="text" value="'.$hlsp_player_option['version'].'" placeholder="8.12.5">';
 	}
 
 	add_settings_field( 'hlsp_player_key', 'JW Player License Key', 'hlsp_player_key_function', $option_group, $setting_section );
