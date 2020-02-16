@@ -163,6 +163,9 @@ function hlsp_video_func( $atts, $link = '' ) {
 	} else {
 		return $player_div.$player;
 	}
+	if($hlsp_player_option['resumeplayback']) {
+		return '<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script><script>jwplayer("'.esc_html($atts['id']).'").once('play',function(){cookieData=Cookies.get('resumeplayback');[resumeAt,duration]=cookieData.split(':');if(resumeAt<duration){jwplayer("'.esc_html($atts['id']).'").seek(resumeAt);}});jwplayer("'.esc_html($atts['id']).'").on('time',function(e){Cookies.set('resumeplayback',e.position+':'+jwplayer("'.esc_html($atts['id']).'").getDuration());});</script>';
+	}
 }
 add_shortcode( 'hls', 'hlsp_video_func' );
 
