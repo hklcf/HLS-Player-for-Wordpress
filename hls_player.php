@@ -75,6 +75,15 @@ function add_hlsp_menu() {
 		echo '</select>';
 	}
 
+	add_settings_field( 'hlsp_player_resumeplayback', '<label for="hlsp_player_option[resumeplayback]">Resume Playback w/ Cookies</label>', 'hlsp_player_resumeplayback_function', $option_group, $setting_section );
+	function hlsp_player_resumeplayback_function() {
+		$hlsp_player_option = get_option( 'hlsp_player_option' );
+		$resumeplayback = $hlsp_player_option['resumeplayback'];
+		echo '<select id="hlsp_player_option[resumeplayback]" name="hlsp_player_option[resumeplayback]">';
+		echo '<option value="false" '.selected( $resumeplayback, 'false' ).'>false</option><option value="true" '.selected( $resumeplayback, 'true' ).'>true</option>';
+		echo '</select>';
+	}
+
 	add_settings_field( 'hlsp_player_thumbnail', 'Video Thumbnail', 'hlsp_player_thumbnail_function', $option_group, $setting_section );
 	function hlsp_player_thumbnail_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
