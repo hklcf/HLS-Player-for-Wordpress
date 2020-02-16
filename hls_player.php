@@ -93,7 +93,7 @@ function add_hlsp_menu() {
 		echo '<p class="description">The HTTP URL which will load when your watermark image is clicked. (e.g. http://www.mywebsite.com/). If this is not set, a click on the watermark will not do anything.</p>';
 		echo '<br>';
 		echo '<label for="hlsp_player_option[logo_position]">Position </label><select id="hlsp_player_option[logo_position]" name="hlsp_player_option[logo_position]">';
-		echo '<option value="top-right" '.selected( $logo_position, 'top-right' ).'>top-right</option><option value="top-left" '.selected( $logo_position, 'top-left' ).'>top-left</option><option value="bottom-right" '.selected( $logo_position, 'bottom-right' ).'>bottom-right</option><option value="bottom-left" '.selected( $logo_position, 'bottom-left' ).'>bottom-left</option>';
+		echo '<option value="top-left" '.selected( $logo_position, 'top-left' ).'>top-left</option><option value="top-right" '.selected( $logo_position, 'top-right' ).'>top-right</option><option value="bottom-left" '.selected( $logo_position, 'bottom-left' ).'>bottom-left</option><option value="bottom-right" '.selected( $logo_position, 'bottom-right' ).'>bottom-right</option><option value="control-bar" '.selected( $logo_position, 'control-bar' ).'>control-bar</option>';
 		echo '</select>';
 	}
 
