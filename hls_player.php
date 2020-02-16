@@ -51,10 +51,10 @@ function add_hlsp_menu() {
 		echo '<label for="hlsp_player_option[width]">Width </label><input class="small-text" id="hlsp_player_option[width]" name="hlsp_player_option[width]" type="text" value="'.$hlsp_player_option['width'].'" placeholder="100%">';
 	}
 
-	add_settings_field( 'hlsp_player_ratio', 'Player Ratio', 'hlsp_player_ratio_function', $option_group, $setting_section );
+	add_settings_field( 'hlsp_player_ratio', '<label for="hlsp_player_option[ratio]">Player Ratio</label>', 'hlsp_player_ratio_function', $option_group, $setting_section );
 	function hlsp_player_ratio_function() {
 		$hlsp_player_option = get_option( 'hlsp_player_option' );
-		echo '<input class="regular-text" name="hlsp_player_option[ratio]" type="text" value="'.$hlsp_player_option['ratio'].'" placeholder="16:9">';
+		echo '<input class="regular-text" id="hlsp_player_option[ratio]" name="hlsp_player_option[ratio]" type="text" value="'.$hlsp_player_option['ratio'].'" placeholder="16:9">';
 	}
 
 	add_settings_field( 'hlsp_player_preload', 'Video Preload', 'hlsp_player_preload_function', $option_group, $setting_section );
