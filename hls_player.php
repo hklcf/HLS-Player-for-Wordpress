@@ -3,7 +3,7 @@
 Plugin Name: HLS Player
 Plugin URI:  https://github.com/hklcf/HLS-Player-for-Wordpress
 Description: Embed hls stream to WordPress using JW Player
-Version:     1.2
+Version:     1.3
 Author:      HKLCF
 Author URI:  https://eservice-hk.net/
 License:     GPL3.0
@@ -159,7 +159,7 @@ function hlsp_video_func( $atts, $link = '' ) {
 	$player_div = '<div id="'.esc_html($atts['id']).'"></div><script src="https://ssl.p.jwpcdn.com/player/v/'.$hlsp_player_option['version'].'/jwplayer.js"></script>';
 	$player = '<script>jwplayer.key="'.$hlsp_player_option['key'].'";jwplayer("'.esc_html($atts['id']).'").setup({"aspectratio":"'.$hlsp_player_option['ratio'].'","image":"'.$thumbnail.'","file":"'.$source.'","height":"'.$hlsp_player_option['height'].'","width":"'.$hlsp_player_option['width'].'","preload":"'.$hlsp_player_option['preload'].'","playbackRateControls":"'.$hlsp_player_option['playbackratecontrols'].'","logo":{"file":"'.$hlsp_player_option['logo'].'","link":"'.$hlsp_player_option['logo_link'].'","position":"'.$hlsp_player_option['logo_position'].'"},"abouttext":"'.$hlsp_player_option['abouttext'].'","aboutlink":"'.$hlsp_player_option['aboutlink'].'"'.$advertising.'});</script>';
 	if($hlsp_player_option['resumeplayback'] === 'true') {
-		$resumeplayback = '<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script><script>jwplayer("'.esc_html($atts['id']).'").once("play",function(){cookieData=Cookies.get("resume_playback");[resumeAt,duration]=cookieData.split(":");if(resumeAt<duration){jwplayer("'.esc_html($atts['id']).'").seek(resumeAt);}});jwplayer("'.esc_html($atts['id']).'").on("time",function(e){Cookies.set("resume_playback",e.position+":"+jwplayer("'.esc_html($atts['id']).'").getDuration());});</script>';
+		$resumeplayback = '<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script><script>jwplayer("'.esc_html($atts['id']).'").once("play",function(){cookieData=Cookies.get("resume_playback");[resumeAt,duration]=cookieData.split(":");if(resumeAt<duration){jwplayer("'.esc_html($atts['id']).'").seek(resumeAt);}});jwplayer("'.esc_html($atts['id']).'").on("time",function(e){Cookies.set("resume_playback",`${Math.floor(e.position)}`+":"+jwplayer("'.esc_html($atts['id']).'").getDuration(),{path:`${document.location.pathname}`});});</script>';
 	}
 	if($hlsp_player_option['encode'] === '1') {
 		return $player_div.'<script>document.write(window.atob("'.base64_encode($player.$resumeplayback).'"));</script>';
